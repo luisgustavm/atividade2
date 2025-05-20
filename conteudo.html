@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+ <title>Conteúdo - Fundo Estrelado</title>
+ <link rel="stylesheet" href="styles.css" />
+ <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <canvas id="estrelasCanvas"></canvas>
+  <!-- Um elemento gráfico onde geralmente são desenhadas estrelas animadas com JS -->
+
+  <!-- Cabeçalho fixo com menu de navegação -->
+  <header class="menu-topo">
+    <h1>Início</h1>
+    <nav>
+      <!-- Botões de navegação que levam para outras páginas do site -->
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="hero">
+      <!-- Seção de boas-vindas -->
+      <h2>Bem-vindo ao Universo Interativo!</h2>
+      <p>Explore o cosmos, aprenda brincando e descubra curiosidades incríveis sobre o espaço.</p>
+
+      <!-- Destaques com itens interativos -->
+      <section class="destaques">
+        <h3>O que você encontrará aqui?</h3>
+        <ul>
+          <li>🪐 Informações dos planetas do nosso sistema solar</li>
+          <li>📘 Conteúdos interativos como Quiz</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <!-- Rodapé da página -->
+  <footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Avatar no canto da tela -->
+  <div class="user-avatar" id="userAvatar">
+    <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
+    <!-- Imagem do avatar do usuário -->
+  </div>
+
+  <!-- Janela de informações do usuário (oculta por padrão, exibida com JS) -->
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span></span></p>
+    <p><strong>Email:</strong> <span></span></p>
+     <button onclick="window.location.href='index.html'">Sair</button>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="centralizado">
+  <canvas id="estrelasCanvas"></canvas>
+
+  <!-- Menu fixo no topo -->
+  <header class="menu-topo">
+    <h1>Feedback</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part4.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <div class="feedback-section">
+    <h2>Deixe sua opinião sobre o site</h2>
+
+    <!-- Formulário fictício -->
+    <form id="feedbackForm">
+      <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+      <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+
+      <h3>Avalie nosso serviço</h3>
+      <div class="estrelas">
+        <span class="estrela" data-valor="1">&#9733;</span>
+        <span class="estrela" data-valor="2">&#9733;</span>
+        <span class="estrela" data-valor="3">&#9733;</span>
+        <span class="estrela" data-valor="4">&#9733;</span>
+        <span class="estrela" data-valor="5">&#9733;</span>
+      </div>
+      <input type="hidden" name="nota" id="nota" value="0">
+
+      <textarea name="comentario" placeholder="Deixe seu comentário (opcional)"></textarea>
+      <button type="submit">Enviar avaliação</button>
+    </form>
+
+    <!-- Mensagem de feedback fictícia -->
+    <p id="mensagemFeedback" style="display:none; color: lightgreen; margin-top: 10px;">
+      Obrigado pelo seu feedback!
+    </p>
+  </div>
+
+  <!-- Avatar do usuário -->
+  <div class="user-avatar" id="userAvatar">
+    <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
+  </div>
+
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span id="nomeUsuarioFicticio">Usuário Exemplo</span></p>
+    <p><strong>Email:</strong> <span id="emailUsuarioFicticio">exemplo@email.com</span></p>
+     <button onclick="window.location.href='index.html'">Sair</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+     
+</head>
+<body>
+
+<canvas id="estrelasCanvas"></canvas>
+  <header class="menu-topo">
+    <h1>Quiz sobre os planetas</h1>
+    <nav>
+       <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+  
+  <div class="hero2" style="margin-top: 100px;">
+    <h1>Quiz sobre os Planetas</h1>
+  <form id="quizForm">
+    <!-- PERGUNTAS SERÃO INSERIDAS PELO SCRIPT -->
+  </form>
+ <button class="btn-enviar" onclick="enviarQuiz()">Enviar</button>
+  </main>
+</div>
+<div class="user-avatar" id="userAvatar">
+  <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
+</div>
+
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+   <button onclick="window.location.href='index.html'">Sair</button>
+</div>
+
+<footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
