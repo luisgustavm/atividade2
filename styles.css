@@ -370,16 +370,34 @@ position: fixed;
 .user-info-popup button:hover {
   background: #555;
 }
+
 .planetas {
-  margin-top: 60px; /* deixa um espaço para o menu fixo no topo */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  align-items: flex-end; /* opcional, para alinhar os cards embaixo */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1400px;
+  margin: 100px auto 0; /* 80px do topo, centralizado */
+  padding: 20px;
 }
 
+
+@media (max-width: 1200px) {
+  .planetas {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas médias */
+  }
+}
+
+@media (max-width: 800px) {
+  .planetas {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets/celulares */
+  }
+}
+
+@media (max-width: 500px) {
+  .planetas {
+    grid-template-columns: 1fr; /* 1 card por linha em telas pequenas */
+  }
+}
 
 .planeta-card {
   width: 220px;
@@ -418,6 +436,14 @@ position: fixed;
 .planeta-card:hover {
   transform: scale(1.05);
   /* Não mexer na altura para não “pular” */
+}
+.planetas-container {
+  display: flex;
+  flex-wrap: nowrap; /* mantém os cards em linha única */
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 20px; /* espaço entre os cards */
+  overflow-x: auto; /* permite scroll se os cards forem maiores que a tela */
+  padding: 20px;
 }
 
 
