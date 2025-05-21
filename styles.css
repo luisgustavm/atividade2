@@ -571,3 +571,57 @@ button[type="submit"]:hover {
 canvas {
   display: block;
 }
+body.fundo-galaxia {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  z-index: 0;
+  overflow-x: hidden;
+}
+body.fundo-sol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+/* Camada de fundo fixa e transparente */
+.fundo-galaxia::before {
+  content: "";
+  position: fixed; /* <- fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://s2.glbimg.com/xwML9IO0IQBvHWc5zgIlaMVG9As=/smart/e.glbimg.com/og/ed/f/original/2019/09/27/bh_accretiondisk_sim_stationary_websize.gif') no-repeat center center;
+  background-size: cover;
+  opacity: 0.5; /* controla a transparência */
+  z-index: -1;   /* mantém atrás do conteúdo */
+  pointer-events: none; /* garante que o fundo não interfira nos cliques */
+}
+.fundo-sol::before {
+  content: "";
+  position: fixed; /* <- fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://i.gifer.com/origin/ea/eaf933959d3986c6aac35647c7cb9e74_w200.gif') no-repeat center center;
+  background-size: cover;
+  opacity: 0.4; /* controla a transparência */
+  z-index: -1;   /* mantém atrás do conteúdo */
+  pointer-events: none; /* garante que o fundo não interfira nos cliques */
+}
+
+
+body.fundo-espaco {
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa') no-repeat center center fixed;
+  background-size: cover;
+}
