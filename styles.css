@@ -83,10 +83,12 @@ body {
 
 body.centralizado {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;      /* empilha os elementos verticalmente */
+  align-items: center;         /* centraliza horizontalmente */
+  justify-content: flex-start; /* alinha tudo no topo da tela */
   min-height: 100vh;
-  text-align: center;
+  padding-top: 40px;           /* espaço do topo para o título */
+  text-align: center;          /* centraliza o texto do título */
 }
 
 
