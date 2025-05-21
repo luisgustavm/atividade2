@@ -235,34 +235,6 @@ position: fixed;
   text-align: center;
 }
 
-.menu-topo nav {
-  display: flex;
-  gap: 15px;
-
-  max-width: calc((100px + 15px) * 6 - 15px); /* mostra 5 botões */
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding-bottom: 8px; /* espaçamento pra baixar a barra de rolagem */
-  scrollbar-width: thin; /* Firefox barra fina */
-  scrollbar-color: black transparent; /* thumb preta, fundo transparente */
-}
-
-/* Chrome, Edge, Safari - barra preta e escondida */
-.menu-topo nav::-webkit-scrollbar {
-  height: 6px;  /* altura da barra */
-  background: transparent; /* fundo transparente */
-}
-
-.menu-topo nav::-webkit-scrollbar-thumb {
-  background-color: black; /* thumb preta */
-  border-radius: 3px;
-}
-
-/* Deixa a track transparente e bem "escondida" */
-.menu-topo nav::-webkit-scrollbar-track {
-  background: transparent;
-}
 .imagem-pequena {
   width: 95px;
   height: 70px;
@@ -427,6 +399,7 @@ position: fixed;
   flex-direction: column;
   justify-content: flex-end; /* faz o conteúdo do card ficar alinhado embaixo do card */
 }
+
 @media (max-width: 400px) {
   .login-container, .dashboard-container {
     padding: 20px;
