@@ -1,10 +1,11 @@
 /* Fundo animado com estrelas */
+
 body {
  margin: 0;
   padding: 0;
   min-height: 100%;
   background: linear-gradient(-45deg, #020024, #000000, #040d2e);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   background-attachment: fixed
 }
@@ -117,6 +118,7 @@ body.centralizado {
   width: 95%;
   display: flex;
   align-items: center;
+  gap: 10px;
   justify-content: space-between;
   z-index: 9999;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -125,13 +127,41 @@ body.centralizado {
   overflow: visible;
   text-align: center;
 }
+.imagem-pequena {
+  width: 95px;
+  height: 70px;
+  margin-right: 0;
+  
+}
+.imagem-pequena2 {
+  position: fixed;
+  bottom: 16px;
+  left: 40px;
+  width: 160px; /* ajuste conforme necessário */
+  height: auto;
+  opacity: 0.8;
+  z-index: 1000;
+  margin-left: 250px;
+
+}
+.logo-container2 {
+  display: flex;
+  align-items: center; /* centraliza verticalmente */ /* controla a distância entre imagem e texto */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 9px; /* controla o espaço entre a imagem e o texto */
+}
 
 .menu-topo h1 {
-  margin: 0;
+  margin-left: 0; /* zera o deslocamento lateral */
   font-weight: 700;
   font-size: 1.5rem;
   user-select: none;
 }
+
 
 
 .menu-topo nav {
@@ -326,16 +356,22 @@ body.centralizado {
 }
 
 .rodape {
+  display: flex;
+  justify-content: center; /* centraliza os itens no meio */
+  align-items: center;
   text-align: center;
   margin-top: 80px;
-  color: #fff; /* cor branca para contraste */
-  font-size: 1.2em; /* aumenta o tamanho da letra */
+  color: #fff;
+  font-size: 1.2em;
   padding: 15px 20px;
-  background: rgba(0, 0, 0, 0.5); /* fundo escuro semitransparente */
-  border-top: 2px solid rgba(255, 255, 255, 0.4); /* borda superior */
-  backdrop-filter: blur(4px); /* desfoque suave no fundo */
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
   border-radius: 10px;
+  flex-wrap: wrap;
 }
+
+
 
 .btn-saiba-mais {
   margin-top: 10px;
@@ -570,58 +606,4 @@ button[type="submit"]:hover {
 
 canvas {
   display: block;
-}
-body.fundo-galaxia {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  text-align: center;
-  z-index: 0;
-  overflow-x: hidden;
-}
-body.fundo-sol {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  text-align: center;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-/* Camada de fundo fixa e transparente */
-.fundo-galaxia::before {
-  content: "";
-  position: fixed; /* <- fixo na tela */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('https://s2.glbimg.com/xwML9IO0IQBvHWc5zgIlaMVG9As=/smart/e.glbimg.com/og/ed/f/original/2019/09/27/bh_accretiondisk_sim_stationary_websize.gif') no-repeat center center;
-  background-size: cover;
-  opacity: 0.5; /* controla a transparência */
-  z-index: -1;   /* mantém atrás do conteúdo */
-  pointer-events: none; /* garante que o fundo não interfira nos cliques */
-}
-.fundo-sol::before {
-  content: "";
-  position: fixed; /* <- fixo na tela */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('https://i.gifer.com/origin/ea/eaf933959d3986c6aac35647c7cb9e74_w200.gif') no-repeat center center;
-  background-size: cover;
-  opacity: 0.4; /* controla a transparência */
-  z-index: -1;   /* mantém atrás do conteúdo */
-  pointer-events: none; /* garante que o fundo não interfira nos cliques */
-}
-
-
-body.fundo-espaco {
-  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa') no-repeat center center fixed;
-  background-size: cover;
 }
