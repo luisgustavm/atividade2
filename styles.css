@@ -414,7 +414,7 @@ position: fixed;
   padding: 0.8rem 1rem;
   font-size: 0.9rem;
   height: auto;
-  background-color: rgba(251, 251, 251, 0.275);
+  background-color: rgba(53, 53, 53, 0.275);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
