@@ -4,51 +4,36 @@
   <meta charset="UTF-8" />
   <title>Cadastro - Fundo Estrelado</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
-
 <body class="centralizado">
-  <!-- Corpo do site com uma classe 'centralizado' (provavelmente usada no CSS para centralizar o conteúdo) -->
-  <h1>Stellar Interaction</h1>
+<h1>Stellar Interaction</h1>
   <div class="login-container cadastro-container">
-    <!-- Um contêiner para o formulário de cadastro, com classes CSS aplicadas -->
-
     <h2>Cadastro</h2>
 
-    <!-- Início do formulário de cadastro -->
+    <!-- Adicionado id="formCadastro" -->
     <form id="formCadastro">
-      <!-- Campo para o nome completo -->
       <label for="nome">Nome Completo</label>
       <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required />
 
-      <!-- Campo para o e-mail -->
       <label for="email">E-mail</label>
       <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
 
-      <!-- Campo para o nome de usuário -->
       <label for="usuario">Usuário</label>
       <input type="text" id="usuario" name="usuario" placeholder="Escolha um usuário" required />
 
-      <!-- Campo para a senha -->
       <label for="senha">Senha</label>
       <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required />
 
-      <!-- Campo para confirmar a senha -->
       <label for="confirmSenha">Confirmar Senha</label>
       <input type="password" id="confirmSenha" name="confirmSenha" placeholder="Confirme sua senha" required />
 
-      <!-- Botão para enviar o formulário de cadastro -->
       <button type="submit">Cadastrar</button>
-
-      <!-- Botão para voltar à tela de login (redireciona para index.html) -->
-      <button type="button" class="btn-login" onclick="window.location.href='index.html'">
-        Voltar ao Login
-      </button>
+      <button type="button" class="btn-login" onclick="window.location.href='index.html'">Voltar ao Login</button>
     </form>
-    <!-- Fim do formulário -->
   </div>
 
-  <!-- Importa o arquivo JavaScript (pode conter lógica de validação do cadastro, por exemplo) -->
+  <!-- Agora o script é carregado corretamente -->
   <script src="script.js"></script>
 </body>
-
 </html>

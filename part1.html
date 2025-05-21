@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 (suporte para acentos e símbolos) -->
-  <title>Conteúdo - Fundo Estrelado</title> <!-- Título da aba do navegador -->
-
-  <!-- Links externos (CSS e JS) -->
-  <link rel="stylesheet" href="styles.css" /> <!-- Estilo da página -->
-  <script src="script.js" defer></script> 
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+      <script src="script2.js" defer></script>
+       <script src="script3.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-
 </head>
-
-<body class="fundo-espaco">
-  <!-- Canvas para fundo animado de estrelas -->
-  <canvas id="estrelasCanvas"></canvas>
-
-  <!-- Cabeçalho fixo com menu de navegação -->
+<body>
+<canvas id="estrelasCanvas"></canvas>
+  <!-- Menu fixo no topo -->
   <header class="menu-topo">
-     <div class="logo-container">
-    <img src="img/logo.png" alt="logo"  class="imagem-pequena"/>
     <h1>Planetas</h1>
-     </div> <!-- Título do site -->
     <nav>
-      <!-- Botões de navegação para outras páginas -->
-      <button onclick="window.location.href='conteudo.html'">Início</button>
+   <button onclick="window.location.href='conteudo.html'">Início</button>
       <button onclick="window.location.href='part1.html'">Planetas</button>
       <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
       <button onclick="window.location.href='part2.html'">Quiz</button>
       <button onclick="window.location.href='part3.html'">Feedback</button>
     </nav>
   </header>
+
   <!-- Conteúdo principal -->
 <div class="planetas">
 
@@ -130,23 +123,29 @@
   </div>
 
 </div>
-
-    <footer class="rodape">
+ <footer class="rodape">
     <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+    <div class="logo-container2">
      <img src="img/logo2.png" alt="Imagem do planeta" class="imagem-pequena2"/>
+     </div>
   </footer>
 
-  <!-- Avatar do usuário no canto da tela -->
-  <div class="user-avatar" id="userAvatar">
-    <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
-  </div>
 
-  <!-- Pop-up com informações do usuário -->
-  <div class="user-info-popup" id="userInfoPopup">
-    <h3>Informações do Usuário</h3>
-    <p><strong>Nome:</strong> <span></span></p>
-    <p><strong>Email:</strong> <span></span></p>
-     <button onclick="window.location.href='index.html'">Sair</button>
-  </div>
+<!-- Avatar no canto -->
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
+
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
+
+
 </body>
 </html>

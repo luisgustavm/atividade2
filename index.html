@@ -3,55 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login - Fundo Estrelado</title>
- <link rel="stylesheet" href="styles.css">
- <script src="script.js"></script>
- <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-
-  </head>
+  <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+</head>
 <body class="centralizado">
-    <h1>Stellar Interaction</h1>
-  <div id="login-container" class="login-container">
-    <!-- Contêiner principal do formulário de login -->
+<h1>Stellar Interaction</h1>
+ <div id="login-container" class="login-container">
 
     <h2>Login</h2>
-    <!-- Título da seção de login -->
-
-    <!-- Início do formulário -->
+    
+    <!-- Adicionado id="formLogin" -->
     <form id="formLogin">
-      <!-- Campo para o nome de usuário -->
       <label for="usuario">Usuário</label>
-      <input 
-        type="text" 
-        id="usuario" 
-        name="usuario" 
-        placeholder="Digite seu usuário" 
-        autocomplete="username" 
-        required 
-      />
+      <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" autocomplete="username" required />
 
-      <!-- Campo para a senha -->
       <label for="senha">Senha</label>
-      <input 
-        type="password" 
-        id="senha" 
-        name="senha" 
-        placeholder="Digite sua senha" 
-        autocomplete="current-password" 
-        required 
-      />
-      <br />
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required />
 
-      <!-- Botão para entrar no sistema (leva direto para a próxima página) -->
-      <button onclick="window.location.href='conteudo.html'">
-        Entrar
-      </button>
+      <button type="submit">Entrar</button>
     </form>
 
-    <!-- Botão para redirecionar para o cadastro -->
-    <button onclick="window.location.href='cadastro.html'">
-      Cadastrar
-    </button>
+    <button class="btn-cadastro" onclick="window.location.href='cadastro.html'">Cadastrar-se</button>
   </div>
 
+
+  <!-- Agora o script é carregado após o HTML -->
+<script src="script.js"></script>
+<script src="script6.js"></script>
+<script src="script7.js"></script>
 </body>
 </html>

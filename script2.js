@@ -1,4 +1,4 @@
-const perguntas = [
+ const perguntas = [
   {
     pergunta: "Qual planeta é conhecido por seus anéis?",
     opcoes: ["Júpiter", "Saturno", "Netuno", "Marte"],

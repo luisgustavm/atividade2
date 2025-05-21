@@ -1,50 +1,3 @@
- const canvas = document.getElementById('estrelasCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let estrelas = [];
-    let numEstrelas = 150;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function criaEstrelas() {
-      estrelas = [];
-      for (let i = 0; i < numEstrelas; i++) {
-        estrelas.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5,
-          alpha: Math.random(),
-          delta: Math.random() * 0.02
-        });
-      }
-    }
-
-    function animaEstrelas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let estrela of estrelas) {
-        ctx.beginPath();
-        ctx.arc(estrela.x, estrela.y, estrela.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = `rgba(255, 255, 255, ${estrela.alpha})`;
-        ctx.fill();
-        estrela.alpha += estrela.delta;
-        if (estrela.alpha <= 0 || estrela.alpha >= 1) {
-          estrela.delta = -estrela.delta;
-        }
-      }
-      requestAnimationFrame(animaEstrelas);
-    }
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      criaEstrelas();
-    });
-
-    resizeCanvas();
-    criaEstrelas();
-    animaEstrelas();
 
     // Mostrar info e zoom ao clicar na imagem
 function mostrarInfo(tipo) {
@@ -108,42 +61,250 @@ function mostrarInfo(tipo) {
   infoBox.style.left = `${leftPos}px`;
   infoBox.style.top = `${topPos}px`;
 }
- 
-// Simulação fictícia da interface de usuário
-const usuarioLogado = "usuario_exemplo"; // Nome fictício
-const dadosUsuario = {
-  email: "exemplo@email.com"
-};
-
-// Exibe o popup com informações fictícias
-const userInfoPopup = document.getElementById("userInfoPopup");
-if (userInfoPopup) {
-  userInfoPopup.querySelector("p:nth-of-type(1) span").textContent = usuarioLogado;
-  userInfoPopup.querySelector("p:nth-of-type(2) span").textContent = dadosUsuario.email;
+// Função para logout (deve ficar fora do DOMContentLoaded para ser acessível de fora)
+function logout() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "index.html"; // Página de login
 }
 
-const avatar = document.getElementById("userAvatar");
-const closeBtn = document.getElementById("closePopup");
+document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
+  const btnEsqueciSenha = document.getElementById('btnEsqueciSenha');
+  if (btnEsqueciSenha) {
+    btnEsqueciSenha.addEventListener('click', mostrarTelaEsqueciSenha);
+  }
+  // Fundo animado só para index.html e cadastro.html
+  if (path.includes("index.html") || path.includes("cadastro.html")) {
+    // Criar estrelas animadas
+    for (let i = 0; i < 120; i++) {
+      const orbit = document.createElement("div");
+      orbit.className = "star-orbit";
+      orbit.style.top = Math.random() * 100 + "vh";
+      orbit.style.left = Math.random() * 100 + "vw";
+      orbit.style.animationDuration = (30 + Math.random() * 60) + "s";
 
-if (avatar && userInfoPopup) {
-  avatar.addEventListener("click", () => {
-    userInfoPopup.style.display = userInfoPopup.style.display === "block" ? "none" : "block";
-  });
+      const star = document.createElement("div");
+      star.className = "star";
+      const size = Math.random() * 3 + 1;
+      star.style.width = star.style.height = size + "px";
+      star.style.left = Math.random() * 40 + 10 + "px";
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      userInfoPopup.style.display = "none";
+      orbit.appendChild(star);
+      document.body.appendChild(orbit);
+    }
+
+    // Criar planetas no fundo
+    const planets = [
+      { size: 80, top: '10vh', left: '10vw', image: 'https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg' },
+      { size: 100, top: '75vh', left: '20vw', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/500px-Jupiter.jpg' },
+      { size: 120, top: '25vh', left: '75vw', image: 'https://img.odcdn.com.br/wp-content/uploads/2022/12/Terra.jpg' },
+      { size: 70, top: '70vh', left: '85vw', image: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Uranus_%28Edited%29.jpg' },
+      { size: 90, top: '50vh', left: '50vw', image: 'https://s2.glbimg.com/9qsld0QqbkS4vlbYgwaISENeQNA=/e.glbimg.com/og/ed/f/original/2019/02/21/neptune1.en.jpg' }
+    ];
+
+    planets.forEach(p => {
+      const planet = document.createElement('div');
+      planet.className = 'planet';
+      planet.style.width = `${p.size}px`;
+      planet.style.height = `${p.size}px`;
+      planet.style.top = p.top;
+      planet.style.left = p.left;
+      planet.style.backgroundImage = `url(${p.image})`;
+      planet.style.opacity = "0.6";
+      document.body.appendChild(planet);
+    });
+  }
+// === Cadastro ===
+  const formCadastro = document.querySelector("#formCadastro");
+  if (formCadastro) {
+    formCadastro.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const usuario = formCadastro.usuario.value.trim();
+      const senha = formCadastro.senha.value;
+      const confirmSenha = formCadastro.confirmSenha.value;
+      const email = formCadastro.email.value.trim();
+
+      if (senha !== confirmSenha) {
+        alert("As senhas não coincidem!");
+        return;
+      }
+
+      if (localStorage.getItem(`user_${usuario}`)) {
+        alert("Usuário já existe!");
+        return;
+      }
+
+      const dadosUsuario = {
+        senha: senha,
+        email: email
+      };
+
+      localStorage.setItem(`user_${usuario}`, JSON.stringify(dadosUsuario));
+      alert("Cadastro realizado com sucesso!");
+
+      window.location.href = "index.html"; // redireciona para login
     });
   }
 
-  window.addEventListener("click", (e) => {
-    if (!userInfoPopup.contains(e.target) && !avatar.contains(e.target)) {
-      userInfoPopup.style.display = "none";
-    }
-  });
-}
-    // Simulação de envio do formulário
-    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Impede o envio real
-      document.getElementById("mensagemFeedback").style.display = "block";
+  // === Login ===
+  const formLogin = document.querySelector("#formLogin");
+  if (formLogin) {
+    formLogin.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const usuario = formLogin.usuario.value.trim();
+      const senha = formLogin.senha.value;
+
+      const dadosUsuarioJSON = localStorage.getItem(`user_${usuario}`);
+
+      if (!dadosUsuarioJSON) {
+        alert("Usuário não encontrado!");
+        return;
+      }
+
+      const dadosUsuario = JSON.parse(dadosUsuarioJSON);
+
+      if (senha !== dadosUsuario.senha) {
+        alert("Senha incorreta!");
+        return;
+      }
+
+      localStorage.setItem("usuarioLogado", usuario);
+      alert("Login realizado com sucesso!");
+      window.location.href = "conteudo.html";
     });
+  }
+
+
+  // === Verifica se está logado e mostra popup ===
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  if (usuarioLogado) {
+    const dadosUsuarioJSON = localStorage.getItem(`user_${usuarioLogado}`);
+    if (dadosUsuarioJSON) {
+      const dadosUsuario = JSON.parse(dadosUsuarioJSON);
+
+      const userInfoPopup = document.getElementById("userInfoPopup");
+      if (userInfoPopup) {
+        userInfoPopup.querySelector("p:nth-of-type(1) span").textContent = usuarioLogado;
+        userInfoPopup.querySelector("p:nth-of-type(2) span").textContent = dadosUsuario.email || "Não informado";
+      }
+
+      const avatar = document.getElementById("userAvatar");
+      const closeBtn = document.getElementById("closePopup");
+
+      if (avatar && userInfoPopup) {
+        avatar.addEventListener("click", () => {
+          userInfoPopup.style.display = userInfoPopup.style.display === "block" ? "none" : "block";
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            userInfoPopup.style.display = "none";
+          });
+        }
+
+        window.addEventListener("click", (e) => {
+          if (!userInfoPopup.contains(e.target) && !avatar.contains(e.target)) {
+            userInfoPopup.style.display = "none";
+          }
+        });
+      }
+    } else {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    }
+  } else {
+    // Se estiver na página de conteúdo e não estiver logado, redireciona
+    if (window.location.pathname.includes("conteudo.html")) {
+      window.location.href = "index.html";
+    }
+  }
+
+  // === Avatar ===
+  const avatarImg = document.querySelector("#userAvatar img");
+  const avatarInput = document.getElementById("avatarInput");
+  const changeAvatarBtn = document.getElementById("changeAvatarBtn");
+
+  if (changeAvatarBtn && avatarInput && avatarImg) {
+    // Carrega avatar salvo (se houver)
+    const avatarSalvo = localStorage.getItem(`avatar_${usuarioLogado}`);
+    if (avatarSalvo) {
+      avatarImg.src = avatarSalvo;
+    }
+
+    // Clica no input ao clicar no botão
+    changeAvatarBtn.addEventListener("click", () => {
+      avatarInput.click();
+    });
+
+    // Quando o usuário escolhe uma nova imagem
+    avatarInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imageData = e.target.result;
+          avatarImg.src = imageData;
+          localStorage.setItem(`avatar_${usuarioLogado}`, imageData);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  // === Sistema de estrelas para avaliação ===
+  const estrelas = document.querySelectorAll(".estrela");
+  const inputNota = document.getElementById("nota");
+
+  function atualizarEstrelas(nota) {
+    estrelas.forEach(estrela => {
+      const valor = parseInt(estrela.dataset.valor);
+      estrela.classList.toggle("selecionada", valor <= nota);
+    });
+  }
+
+  if (estrelas.length && inputNota) {
+    estrelas.forEach(estrela => {
+      estrela.addEventListener("click", () => {
+        const valor = parseInt(estrela.dataset.valor);
+        inputNota.value = valor;
+        atualizarEstrelas(valor);
+      });
+
+      estrela.addEventListener("mouseenter", () => {
+        const valor = parseInt(estrela.dataset.valor);
+        atualizarEstrelas(valor);
+      });
+
+      estrela.addEventListener("mouseleave", () => {
+        atualizarEstrelas(parseInt(inputNota.value));
+      });
+    });
+
+    atualizarEstrelas(parseInt(inputNota.value));
+  }
+ 
+  // === Feedback form ===
+  const feedbackForm = document.getElementById("feedbackForm");
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Mostrar mensagem de sucesso
+      const mensagemEnviada = document.getElementById("mensagem-enviada");
+      if (mensagemEnviada) {
+        mensagemEnviada.style.display = "block";
+      }
+
+      // Limpar formulário
+      this.reset();
+
+      // Reset estrelas
+      if (inputNota) {
+        inputNota.value = 0;
+        atualizarEstrelas(0);
+      }
+    });
+  }
+});

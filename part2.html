@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <title>Conteúdo - Fundo Estrelado</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
-<script src="script2.js" defer></script>
+  <script src="script2.js" defer></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
@@ -37,17 +36,19 @@
     </div>
   </main>
 
-  <!-- Use somente um container com ID único para avatar -->
-  <div class="user-avatar" id="userAvatar">
-    <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
-  </div>
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
 
-  <div class="user-info-popup" id="userInfoPopup">
-    <h3>Informações do Usuário</h3>
-    <p><strong>Nome:</strong> <span></span></p>
-    <p><strong>Email:</strong> <span></span></p>
-    <button onclick="window.location.href='index.html'">Sair</button>
-  </div>
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
 
   <footer class="rodape">
     <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>

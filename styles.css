@@ -1,13 +1,111 @@
 /* Fundo animado com estrelas */
-
 body {
  margin: 0;
   padding: 0;
   min-height: 100%;
-  background: linear-gradient(-45deg, #020024, #000000, #040d2e);
-    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url(img/estrelas.jpg);
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   background-attachment: fixed
+}
+body.fundo-galaxia {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  z-index: 0;
+  overflow-x: hidden;
+}
+.fundo-galaxia::before {
+  content: "";
+  position: fixed; /* <- fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://s2.glbimg.com/xwML9IO0IQBvHWc5zgIlaMVG9As=/smart/e.glbimg.com/og/ed/f/original/2019/09/27/bh_accretiondisk_sim_stationary_websize.gif') no-repeat center center;
+  background-size: cover;
+  opacity: 0.5; /* controla a transparência */
+  z-index: -1;   /* mantém atrás do conteúdo */
+  pointer-events: none; /* garante que o fundo não interfira nos cliques */
+}
+@keyframes moveBackground {
+  0% {
+    background-position: center center;
+  }
+  100% {
+    background-position: center 20%;
+  }
+}
+
+
+/* Estrelas girando */
+.star-orbit {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform-origin: center;
+  animation: orbit linear infinite;
+  pointer-events: none;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Efeito de estrela no cursor */
+.cursor-star {
+  width: 10px;
+  height: 10px;
+  background: #ffffffcc;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px 4px white;
+  animation: sparkle 0.5s ease-out;
+}
+
+@keyframes sparkle {
+  from {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Planetas no fundo */
+.planet {
+  opacity: 0.8;
+  border-radius: 50%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  animation: rotatePlanet 120s linear infinite;
+}
+
+@keyframes rotatePlanet {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Container central de login/cadastro */
@@ -92,6 +190,7 @@ body.centralizado {
 }
 
 
+
 /* Tela de dashboard (conteúdo) */
 .dashboard-container {
   position: relative;
@@ -108,7 +207,7 @@ body.centralizado {
 }
 
 .menu-topo {
- position: fixed;
+position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -128,6 +227,35 @@ body.centralizado {
   /* altura fixa do menu */
   overflow: visible;
   text-align: center;
+}
+
+.menu-topo nav {
+  display: flex;
+  gap: 15px;
+
+  max-width: calc((100px + 15px) * 6 - 15px); /* mostra 5 botões */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 8px; /* espaçamento pra baixar a barra de rolagem */
+  scrollbar-width: thin; /* Firefox barra fina */
+  scrollbar-color: black transparent; /* thumb preta, fundo transparente */
+}
+
+/* Chrome, Edge, Safari - barra preta e escondida */
+.menu-topo nav::-webkit-scrollbar {
+  height: 6px;  /* altura da barra */
+  background: transparent; /* fundo transparente */
+}
+
+.menu-topo nav::-webkit-scrollbar-thumb {
+  background-color: black; /* thumb preta */
+  border-radius: 3px;
+}
+
+/* Deixa a track transparente e bem "escondida" */
+.menu-topo nav::-webkit-scrollbar-track {
+  background: transparent;
 }
 .imagem-pequena {
   width: 95px;
@@ -158,12 +286,11 @@ body.centralizado {
 }
 
 .menu-topo h1 {
-  margin-left: 0; /* zera o deslocamento lateral */
+  margin: 0;
   font-weight: 700;
   font-size: 1.5rem;
   user-select: none;
 }
-
 
 
 .menu-topo nav {
@@ -182,6 +309,23 @@ body.centralizado {
   transition: background-color 0.3s ease;
   user-select: none;
 }
+
+/* Para telas pequenas, deixa o menu em coluna */
+@media (max-width: 600px) {
+  .menu-topo {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  .menu-topo nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+
 
 .dashboard-container h1 {
   font-size: 2rem;
@@ -264,7 +408,7 @@ body.centralizado {
   padding: 0.8rem 1rem;
   font-size: 0.9rem;
   height: auto;
-  background: rgba(141, 141, 141, 0.327);
+  background-color: rgba(251, 251, 251, 0.275);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
@@ -277,8 +421,14 @@ body.centralizado {
   flex-direction: column;
   justify-content: flex-end; /* faz o conteúdo do card ficar alinhado embaixo do card */
 }
-
-
+@media (max-width: 400px) {
+  .login-container, .dashboard-container {
+    padding: 20px;
+  }
+  .planeta-card {
+    width: 90%;
+  }
+}
 .planeta-card img {
   width: 100%;
   height: 200px; /* diminui a altura da imagem */
@@ -299,7 +449,7 @@ body.centralizado {
   text-align: center;
   margin-top: 100px;
   padding: 100px 6px;
-  background-color: rgba(141, 141, 141, 0.327);
+  background-color: rgba(251, 251, 251, 0.275);
   border-radius: 20px;
   backdrop-filter: blur(5px);
 }
@@ -372,8 +522,6 @@ body.centralizado {
   border-radius: 10px;
   flex-wrap: wrap;
 }
-
-
 
 .btn-saiba-mais {
   margin-top: 10px;
@@ -578,6 +726,25 @@ button[type="submit"]:hover {
   /* removi bottom e left fixos para usar left/top dinâmicos */
 }
 
+#voltarBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid white;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  z-index: 20;
+  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
+}
+
+#voltarBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 
 .user-avatar {
   position: fixed;
@@ -598,28 +765,4 @@ button[type="submit"]:hover {
   object-fit: cover;
   border-radius: 50%;
   z-index: 1;
-}
-
-.body2 {
-  margin: 0;
-  overflow: hidden;
-  background: black;
-}
-
-canvas {
-  display: block;
-}
-.hero2 {
-  text-align: center;
-  margin-top: 40px; /* diminui de 100px para 40px */
-  padding: 8px 6px; /* diminui um pouco o padding vertical */
-   background-color: rgba(102, 102, 102, 0.425);
-  border-radius: 20px;
-  backdrop-filter: blur(5px);
-}
-
-
-.hero h2 {
-  font-size: 2.5em;
-  color: white;
 }
