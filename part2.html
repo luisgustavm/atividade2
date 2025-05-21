@@ -4,21 +4,22 @@
   <meta charset="UTF-8" />
   <title>Conteúdo - Fundo Estrelado</title>
   <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="script.js" defer></script>
+<script src="script2.js" defer></script>
 
-     
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body class="fundo-galaxia">
 
-<canvas id="estrelasCanvas"></canvas>
+  <canvas id="estrelasCanvas"></canvas>
+
   <header class="menu-topo">
     <div class="logo-container">
-    <img src="img/logo.png" alt="logo"  class="imagem-pequena"/>
-    <h1>Quiz sobre os planetas</h1>
+      <img src="img/logo.png" alt="logo" class="imagem-pequena" />
+      <h1>Quiz sobre os planetas</h1>
     </div>
     <nav>
-       <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
       <button onclick="window.location.href='part1.html'">Planetas</button>
       <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
       <button onclick="window.location.href='part2.html'">Quiz</button>
@@ -26,90 +27,31 @@
     </nav>
   </header>
 
-  
-  <div class="hero2" style="margin-top: 100px;">
-    <h1>Quiz sobre os Planetas</h1>
-  
-  <div id="quizForm">
-    
-    <div class="pergunta"><p><strong>1. Qual planeta é conhecido por seus anéis?</strong></p>
-      <label><input type="radio" disabled> Júpiter</label><br>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Marte</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>2. Qual é o planeta mais próximo do Sol?</strong></p>
-      <label><input type="radio" disabled> Vênus</label><br>
-      <label><input type="radio" disabled> Terra</label><br>
-      <label><input type="radio" disabled> Mercúrio</label><br>
-      <label><input type="radio" disabled> Marte</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>3. Qual planeta tem o maior vulcão do sistema solar?</strong></p>
-      <label><input type="radio" disabled> Terra</label><br>
-      <label><input type="radio" disabled> Marte</label><br>
-      <label><input type="radio" disabled> Júpiter</label><br>
-      <label><input type="radio" disabled> Vênus</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>4. Qual planeta é conhecido como planeta azul?</strong></p>
-      <label><input type="radio" disabled> Urano</label><br>
-      <label><input type="radio" disabled> Terra</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Marte</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>5. Qual planeta gira de lado?</strong></p>
-      <label><input type="radio" disabled> Urano</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Mercúrio</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>6. Qual planeta tem os dias mais longos?</strong></p>
-      <label><input type="radio" disabled> Vênus</label><br>
-      <label><input type="radio" disabled> Marte</label><br>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Netuno</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>7. Qual planeta tem a maior lua do sistema solar?</strong></p>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Júpiter</label><br>
-      <label><input type="radio" disabled> Marte</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>8. Qual planeta tem clima mais extremo?</strong></p>
-      <label><input type="radio" disabled> Terra</label><br>
-      <label><input type="radio" disabled> Vênus</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Marte</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>9. Qual planeta tem a maior tempestade do sistema solar?</strong></p>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Júpiter</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Urano</label><br><hr></div>
-
-    <div class="pergunta"><p><strong>10. Qual planeta tem composição parecida com a da Terra?</strong></p>
-      <label><input type="radio" disabled> Vênus</label><br>
-      <label><input type="radio" disabled> Netuno</label><br>
-      <label><input type="radio" disabled> Saturno</label><br>
-      <label><input type="radio" disabled> Urano</label><br><hr>
+  <main>
+    <div class="hero2" style="margin-top: 100px;">
+      <h1>Quiz sobre os Planetas</h1>
+      <form id="quizForm">
+        <!-- PERGUNTAS SERÃO INSERIDAS PELO SCRIPT -->
+      </form>
+      <button class="btn-enviar" onclick="enviarQuiz()">Enviar</button>
     </div>
-  </div>
- <button class="btn-enviar" onclick="enviarQuiz()">Enviar</button>
   </main>
 
-</div>
-<div class="user-avatar" id="userAvatar">
-  <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
-</div>
+  <!-- Use somente um container com ID único para avatar -->
+  <div class="user-avatar" id="userAvatar">
+    <img src="img/fotoperfil.jpg" alt="Avatar do usuário" />
+  </div>
 
- <div class="user-info-popup" id="userInfoPopup">
+  <div class="user-info-popup" id="userInfoPopup">
     <h3>Informações do Usuário</h3>
     <p><strong>Nome:</strong> <span></span></p>
     <p><strong>Email:</strong> <span></span></p>
-     <button onclick="window.location.href='index.html'">Sair</button>
+    <button onclick="window.location.href='index.html'">Sair</button>
   </div>
+
   <footer class="rodape">
     <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
-      <img src="img/logo2.png" alt="Imagem do planeta" class="imagem-pequena2"/>
+    <img src="img/logo2.png" alt="Imagem do planeta" class="imagem-pequena2" />
   </footer>
 </body>
 </html>

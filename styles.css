@@ -609,3 +609,17 @@ button[type="submit"]:hover {
 canvas {
   display: block;
 }
+.hero2 {
+  text-align: center;
+  margin-top: 40px; /* diminui de 100px para 40px */
+  padding: 8px 6px; /* diminui um pouco o padding vertical */
+   background-color: rgba(102, 102, 102, 0.425);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+
+.hero h2 {
+  font-size: 2.5em;
+  color: white;
+}

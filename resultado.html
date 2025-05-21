@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resultado do Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script2.js" defer></script> <!-- Contém o array perguntas -->
+  <script src="script.js" defer></script>  <!-- Contém outras funções -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <center><h1>Resultado do Quiz</h1></center>
+  <center><div id="resultadoContainer"></div></center>
+  <center><button onclick="window.location.href='part2.html'" class="btn-saiba-mais">Voltar</button></center>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const respostasUsuario = JSON.parse(localStorage.getItem("respostasUsuario") || "[]");
+      const container = document.getElementById("resultadoContainer");
+
+      perguntas.forEach((q, i) => {
+        const userResp = respostasUsuario[i];
+        const correta = q.correta;
+        const cor = userResp === correta ? "green" : "red";
+        container.innerHTML += `
+          <div style="margin-bottom: 15px;">
+            <p><strong>${i + 1}. ${q.pergunta}</strong></p>
+            <p style="color: ${cor};">
+              Sua resposta: ${q.opcoes[userResp] || "Não respondeu"} <br>
+              Correta: ${q.opcoes[correta]}
+            </p>
+            <p><em>${q.explicacao}</em></p>
+            <hr>
+          </div>
+        `;
+      });
+    });
+  </script>
+</body>
+</html>
